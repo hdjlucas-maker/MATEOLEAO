@@ -1,122 +1,94 @@
-# 🦁 MATA O LEÃO
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Firebase](https://img.shields.io/badge/Firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
 
-> O inverso do Tigrinho.
-> Aqui o usuário aprende a vencer dívidas, controlar impulsos financeiros e evoluir através da gamificação.
+🦁 MATA O LEÃO
 
----
+O inverso do Tigrinho.
+Aqui o usuário aprende a vencer dívidas, controlar impulsos financeiros e evoluir através da gamificação.
 
-## 🚀 Sobre o Projeto
+📌 Sobre o Projeto
 
-O **MATA O LEÃO** é uma aplicação web gamificada de educação financeira criada para transformar hábitos financeiros em desafios interativos.
+O MATA O LEÃO foi criado com o objetivo de ajudar pessoas que enfrentam dificuldades financeiras a desenvolver hábitos melhores de forma leve, divertida e motivadora.
 
-A proposta do projeto é ajudar usuários a:
+Muitos aplicativos financeiros tradicionais acabam sendo cansativos, complexos ou desmotivadores.
+Pensando nisso, desenvolvi uma experiência gamificada onde o usuário evolui financeiramente enquanto joga.
 
-* 💳 controlar dívidas
-* 🛒 evitar compras por impulso
-* 🍔 reduzir gastos desnecessários
-* 💰 criar o hábito de guardar dinheiro
+A proposta do projeto é transformar educação financeira em uma jornada interativa, utilizando:
 
-Tudo isso utilizando:
+⚔️ desafios
+🏆 conquistas
+🔥 streaks
+👹 chefes financeiros
+💰 sistema de economia
+📈 progressão de nível
+🤖 coach motivacional
 
-* sistema de XP
-* ranking
-* conquistas
-* desafios
-* streak diário
-* chefes financeiros
-* progressão de nível
+Tudo isso para incentivar o usuário a economizar e melhorar sua vida financeira sem sentir que está “estudando finanças”.
 
----
-
-## 🎮 Funcionalidades
+🎮 Funcionalidades
 
 ✅ Login com Google
 ✅ Dashboard do usuário
 ✅ Sistema de XP e níveis
-✅ Desafios financeiros
-✅ Sistema de streak 🔥
+✅ Desafios financeiros gamificados
+✅ Sistema de streak diário 🔥
 ✅ Ranking global 🏆
-✅ Conquistas e badges 🏅
-✅ Sistema de bosses 👹
+✅ Sistema de conquistas 🏅
+✅ Chefes financeiros 👹
 ✅ Persistência de dados com Firebase
 ✅ Interface responsiva 📱
 ✅ Coach motivacional 🤖
 
----
-
-## 🛠️ Tecnologias Utilizadas
-
-* HTML5
-* CSS3
-* JavaScript
-* Firebase Authentication
-* Firestore Database
-
----
-
-## 📸 Preview
-
-### 🏠 Tela Inicial
-
-<img width="100%" src="./assets/home.png">
-
-### 📊 Dashboard
-
-<img width="100%" src="./assets/dashboard.png">
-
-### 🏆 Ranking
-
-<img width="100%" src="./assets/ranking.png">
-
----
-
-## 🌐 Deploy
+🛠️ Tecnologias Utilizadas
+HTML5
+CSS3
+JavaScript
+Firebase Authentication
+Firestore Database
+🌐 Deploy
 
 🚀 Projeto online:
-https://mataleao.netlify.app/
 
----
+MATA O LEÃO - Deploy
 
-## 🎯 Objetivo
+💻 Repositório
 
-O projeto foi criado com foco em:
+GitHub - hdjlucas-maker
 
-* gamificação
-* experiência do usuário
-* educação financeira
-* motivação comportamental
+🎯 Objetivo
 
-Transformando organização financeira em uma experiência interativa e divertida.
+O foco principal do projeto foi unir:
 
----
+educação financeira
+gamificação
+experiência do usuário
+motivação comportamental
 
-## 🔥 Diferenciais
+Transformando organização financeira em algo mais acessível e envolvente.
 
-* Conceito original inspirado na luta contra dívidas
-* Gamificação completa
-* Sistema de progressão
-* Integração com Firebase
-* Interface temática e imersiva
+🔥 Diferenciais
+Conceito original inspirado na luta contra dívidas
+Sistema completo de gamificação
+Progressão de nível e XP
+Integração com Firebase
+Interface temática e imersiva
+Experiência focada em motivação do usuário
+📚 Aprendizados
 
----
+Durante o desenvolvimento deste projeto, trabalhei conceitos como:
 
-## 📚 Aprendizados
-
-Durante o desenvolvimento deste projeto foram trabalhados conceitos como:
-
-* autenticação de usuários
-* banco de dados em tempo real
-* manipulação de estado
-* renderização dinâmica
-* lógica de progressão
-* UX/UI
-* gamificação aplicada
-
----
-
-## 👨‍💻 Autor
+autenticação de usuários
+integração com Firebase
+manipulação de dados
+renderização dinâmica
+lógica de progressão
+UX/UI
+gamificação aplicada
+organização de funcionalidades
+👨‍💻 Autor
 
 Desenvolvido por Lucas Correa 🚀
 
-GitHub:
-https://github.com/hdjlucas-maker
+GitHub - Lucas Correa
