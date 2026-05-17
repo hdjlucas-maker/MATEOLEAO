@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATA O LEÃO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --surface2: #181818;
+            --border: rgba(255, 255, 255, 0.07);
+            --gold: #F5A623;
+            --gold-dark: #C47D0A;
+            --red: #E03A3A;
+            --green: #22C55E;
+            --text: #F0EAD8;
+            --muted: rgba(240, 234, 216, 0.45);
+            --title: 'Bebas Neue', cursive;
+            --body: 'Rajdhani', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            font-family: var(--body);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ─── SCREENS ─── */
+        .screen {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .screen.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ─── ENTRADA ─── */
+        #entradaScreen {
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .entrada-hero {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            position: relative;
+            background: radial-gradient(ellipse 100% 70% at 50% 0%, rgba(224, 58, 58, 0.18) 0%, transparent 70%);
+        }
+
+        .lion-emoji {
+            font-size: 7rem;
+            display: block;
+            animation: growl 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(224, 58, 58, 0.5));
+        }
+
+        @keyframes growl {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(-2deg);
+            }
+
+            50% {
+                transform: scale(1.06) rotate(2deg);
+            }
+        }
+
+        .entrada-title {
+            font-family: var(--title);
+            font-size: clamp(3rem, 12vw, 5.5rem);
+            letter-spacing: 4px;
+            text-align: center;
+            margin: .5rem 0 0;
+            background: linear-gradient(160deg, #ff4d4d 0%, #F5A623 60%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+        }
+
+        .entrada-tagline {
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            text-align: center;
+            color: var(--muted);
+            margin: .8rem 0 2.5rem;
+            font-weight: 600;
+            letter-spacing: .5px;
+            max-width: 340px;
+        }
+
+        .desafio-preview {
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+            width: 100%;
+            max-width: 360px;
+            margin-bottom: 2.5rem;
+        }
+
+        .dp-item {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--red);
+            border-radius: 12px;
+            padding: .7rem 1rem;
+            font-size: .9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+        }
+
+        .dp-badge {
+            background: rgba(224, 58, 58, .15);
+            color: #ff8888;
+            font-size: .65rem;
+            padding: .15rem .5rem;
+            border-radius: 20px;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        .btn-entrar {
+            background: var(--red);
+            color: #fff;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: var(--title);
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: .15s;
+            box-shadow: 0 0 30px rgba(224, 58, 58, .4);
+            width: 100%;
+            max-width: 360px;
+        }
+
+        .btn-entrar:active {
+            transform: scale(.97);
+        }
+
+        .entrada-fine {
+            font-size: .72rem;
+            color: var(--muted);
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* ─── ONBOARDING ─── */
+        #onboardingScreen {
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(224, 58, 58, .12), transparent);
+        }
+
+        .ob-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .ob-step {
+            display: none;
+        }
+
+        .ob-step.active {
+            display: block;
+        }
+
+        .ob-step-label {
+            font-size: .72rem;
+            color: var(--muted);
+            margin-bottom: .3rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .ob-title {
+            font-family: var(--title);
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
+        }
+
+        .ob-options {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+
+        .ob-opt {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: .9rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: left;
+            color: var(--text);
+            transition: .15s;
+            font-family: var(--body);
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+        }
+
+        .ob-opt:hover,
+        .ob-opt.selected {
+            border-color: var(--red);
+            background: rgba(224, 58, 58, .1);
+            color: #ff8888;
+        }
+
+        .ob-input {
+            background: #0d0d0d;
+            border: 1px solid rgba(245, 166, 35, .4);
+            padding: .9rem 1.2rem;
+            border-radius: 40px;
+            color: var(--text);
+            width: 100%;
+            font-family: var(--body);
+            font-size: 1rem;
+            margin: .5rem 0;
+        }
+
+        .ob-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .btn-ob-next {
+            background: var(--red);
+            color: #fff;
+            border: none;
+            padding: .85rem;
+            border-radius: 40px;
+            font-family: var(--title);
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1.2rem;
+            transition: .15s;
+        }
+
+        .btn-ob-next:active {
+            transform: scale(.97);
+        }
+
+        .btn-ob-back {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: .85rem;
+            cursor: pointer;
+            font-family: var(--body);
+            margin-top: .6rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .ob-progress {
+            display: flex;
+            gap: .3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ob-dot {
+            height: 4px;
+            flex: 1;
+            background: var(--border);
+            border-radius: 4px;
+            transition: .3s;
+        }
+
+        .ob-dot.done {
+            background: var(--red);
+        }
+
+        /* ─── LOGIN ─── */
+        #loginScreen {
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .login-card {
+            background: var(--surface);
+            border: 1px solid rgba(245, 166, 35, .3);
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            max-width: 360px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 60px rgba(224, 58, 58, .15);
+        }
+
+        .login-lion {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: .5rem;
+        }
+
+        .login-title {
+            font-family: var(--title);
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #ff4d4d, #F5A623);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: .3rem;
+        }
+
+        .login-sub {
+            font-size: .88rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .google-btn {
+            background: #fff;
+            color: #1a1a1a;
+            border: none;
+            padding: .85rem 1.5rem;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-family: var(--body);
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: .2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .google-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .login-fine {
+            font-size: .7rem;
+            color: var(--muted);
+            margin-top: 1rem;
+        }
+
+        /* ─── APP ─── */
+        #appScreen {
+            flex-direction: column;
+        }
+
+        .app-wrap {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 1rem 1rem 4rem;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .app-logo {
+            font-family: var(--title);
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ff4d4d, #F5A623);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .btn-logout {
+            background: rgba(58, 20, 20, .8);
+            border: 1px solid #ff5555;
+            color: #ffaaaa;
+            padding: .3rem .8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: var(--body);
+            font-size: .8rem;
+            font-weight: 600;
+        }
+
+        /* user bar */
+        .user-bar {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: .9rem 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+        }
+
+        .user-avatar {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-name {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .user-class {
+            font-size: .75rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .xp-bar {
+            background: #1a1a1a;
+            border-radius: 20px;
+            height: 6px;
+            margin: 4px 0;
+            overflow: hidden;
+        }
+
+        .xp-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e03a3a, #F5A623);
+            border-radius: 20px;
+            transition: width .5s;
+        }
+
+        .xp-label {
+            font-size: .7rem;
+            color: var(--muted);
+        }
+
+        /* stats */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: .5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: .7rem;
+            text-align: center;
+        }
+
+        .stat-val {
+            font-family: var(--title);
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+
+        .stat-lbl {
+            font-size: .65rem;
+            color: var(--muted);
+        }
+
+        /* section card */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-family: var(--title);
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--red);
+            padding-bottom: .3rem;
+            margin-bottom: .9rem;
+        }
+
+        /* desafios */
+        .desafio-card {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: .9rem 1rem;
+            margin-bottom: .6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .desafio-card.done {
+            border-color: rgba(34, 197, 94, .3);
+            opacity: .6;
+        }
+
+        .desafio-card.active-d {
+            border-left: 3px solid var(--gold);
+        }
+
+        .desafio-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: .5rem;
+        }
+
+        .desafio-nome {
+            font-weight: 700;
+            font-size: .95rem;
+        }
+
+        .desafio-desc {
+            font-size: .78rem;
+            color: var(--muted);
+            margin-top: .2rem;
+        }
+
+        .desafio-badges {
+            display: flex;
+            gap: .3rem;
+            flex-wrap: wrap;
+            margin-top: .5rem;
+            align-items: center;
+        }
+
+        .badge-pill {
+            font-size: .65rem;
+            font-weight: 700;
+            padding: .15rem .5rem;
+            border-radius: 20px;
+        }
+
+        .pill-dif-1 {
+            background: rgba(34, 197, 94, .15);
+            color: #4ade80;
+        }
+
+        .pill-dif-2 {
+            background: rgba(245, 166, 35, .15);
+            color: #fbbf24;
+        }
+
+        .pill-dif-3 {
+            background: rgba(224, 58, 58, .15);
+            color: #f87171;
+        }
+
+        .pill-xp {
+            background: rgba(245, 166, 35, .1);
+            color: var(--gold);
+        }
+
+        .pill-prazo {
+            background: rgba(255, 255, 255, .07);
+            color: var(--muted);
+        }
+
+        .btn-aceitar {
+            background: var(--red);
+            border: none;
+            color: #fff;
+            padding: .4rem .9rem;
+            border-radius: 20px;
+            font-family: var(--body);
+            font-weight: 700;
+            font-size: .82rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: .15s;
+        }
+
+        .btn-aceitar:active {
+            transform: scale(.96);
+        }
+
+        .btn-concluir {
+            background: rgba(34, 197, 94, .15);
+            border: 1px solid rgba(34, 197, 94, .3);
+            color: #4ade80;
+            padding: .4rem .9rem;
+            border-radius: 20px;
+            font-family: var(--body);
+            font-weight: 700;
+            font-size: .82rem;
+            cursor: pointer;
+            transition: .15s;
+        }
+
+        .btn-desistir {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: .4rem .9rem;
+            border-radius: 20px;
+            font-family: var(--body);
+            font-size: .75rem;
+            cursor: pointer;
+        }
+
+        .desafio-timer {
+            font-size: .7rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-top: .3rem;
+        }
+
+        /* ia mensagem */
+        .ia-box {
+            background: var(--surface2);
+            border: 1px solid rgba(34, 197, 94, .2);
+            border-radius: 14px;
+            padding: 1rem;
+            font-size: .9rem;
+            color: #a7f3d0;
+            line-height: 1.55;
+            min-height: 60px;
+            position: relative;
+        }
+
+        .ia-loading {
+            color: var(--muted);
+            font-style: italic;
+            font-size: .85rem;
+        }
+
+        .btn-nova-ia {
+            background: rgba(34, 197, 94, .1);
+            border: 1px solid rgba(34, 197, 94, .25);
+            color: #4ade80;
+            padding: .5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: var(--body);
+            font-weight: 700;
+            font-size: .82rem;
+            margin-top: .6rem;
+            transition: .15s;
+        }
+
+        .btn-nova-ia:disabled {
+            opacity: .4;
+            cursor: not-allowed;
+        }
+
+        /* guardar */
+        .money-input-row {
+            display: flex;
+            gap: .5rem;
+            margin: .5rem 0;
+        }
+
+        .app-input {
+            background: #0d0d0d;
+            border: 1px solid rgba(245, 166, 35, .35);
+            padding: .7rem 1rem;
+            border-radius: 40px;
+            color: var(--text);
+            font-family: var(--body);
+            font-size: .95rem;
+            flex: 1;
+        }
+
+        .app-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .btn-guardar {
+            background: var(--red);
+            border: none;
+            color: #fff;
+            padding: .7rem 1.2rem;
+            border-radius: 40px;
+            font-family: var(--title);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: .15s;
+        }
+
+        .btn-guardar:active {
+            transform: scale(.96);
+        }
+
+        /* history */
+        .hist-list {
+            list-style: none;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .hist-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: .4rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: .82rem;
+        }
+
+        .hist-list::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .hist-list::-webkit-scrollbar-thumb {
+            background: rgba(245, 166, 35, .2);
+            border-radius: 10px;
+        }
+
+        /* ranking */
+        .rank-list {
+            list-style: none;
+        }
+
+        .rank-list li {
+            padding: .5rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: .88rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .rank-xp {
+            margin-left: auto;
+            font-size: .75rem;
+            color: var(--muted);
+        }
+
+        /* badges */
+        .badges-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .4rem;
+        }
+
+        .badge-item {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: .45rem .7rem;
+            font-size: .72rem;
+            text-align: center;
+            min-width: 70px;
+        }
+
+        .badge-item.earned {
+            background: rgba(34, 197, 94, .08);
+            border-color: rgba(34, 197, 94, .3);
+        }
+
+        .badge-icon {
+            font-size: 1.3rem;
+            display: block;
+        }
+
+        .badge-name {
+            color: var(--muted);
+            font-size: .6rem;
+        }
+
+        .badge-item.earned .badge-name {
+            color: #4ade80;
+        }
+
+        /* chefes */
+        .boss-item {
+            margin-bottom: 1rem;
+        }
+
+        .boss-hp-bar {
+            background: #1a1a1a;
+            border-radius: 20px;
+            height: 10px;
+            margin: .4rem 0;
+            overflow: hidden;
+        }
+
+        .boss-hp-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e03a3a, #ff6b6b);
+            border-radius: 20px;
+            transition: width .4s;
+        }
+
+        .boss-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: .5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-attack {
+            background: rgba(224, 58, 58, .15);
+            border: 1px solid rgba(224, 58, 58, .3);
+            color: #ff8888;
+            padding: .4rem .9rem;
+            border-radius: 20px;
+            font-family: var(--body);
+            font-weight: 700;
+            font-size: .82rem;
+            cursor: pointer;
+            transition: .15s;
+        }
+
+        .btn-attack:disabled {
+            opacity: .35;
+            cursor: not-allowed;
+        }
+
+        /* flash */
+        .flash {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0e2e1e;
+            border: 1px solid #22c55e;
+            color: #4ade80;
+            padding: .55rem 1.4rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: .88rem;
+            z-index: 999;
+            display: none;
+            white-space: nowrap;
+            max-width: 90vw;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            font-size: .68rem;
+            color: var(--muted);
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="flash" id="flash"></div>
+
+    <!-- ══ TELA ENTRADA ══ -->
+    <div id="entradaScreen" class="screen active">
+        <div class="entrada-hero">
+            <span class="lion-emoji">🦁</span>
+            <div class="entrada-title">MATA O LEÃO</div>
+            <p class="entrada-tagline">O Tigrinho te faz perder dinheiro.<br>Aqui você <strong
+                    style="color:var(--gold)">conquista</strong> de volta.</p>
+
+            <div class="desafio-preview">
+                <div class="dp-item">🚫 7 dias sem delivery <span class="dp-badge">+150 XP</span></div>
+                <div class="dp-item">💳 Não parcele nada essa semana <span class="dp-badge">+200 XP</span></div>
+                <div class="dp-item">🍺 Semana seca — sem bar <span class="dp-badge">+120 XP</span></div>
+            </div>
+
+            <button class="btn-entrar" id="btnEntrar">ACEITAR O DESAFIO</button>
+            <p class="entrada-fine">100% gratuito para começar &nbsp;·&nbsp; sem cartão de crédito</p>
+        </div>
+    </div>
+
+    <!-- ══ ONBOARDING ══ -->
+    <div id="onboardingScreen" class="screen">
+        <div class="ob-card">
+            <div class="ob-progress">
+                <div class="ob-dot" id="dot0"></div>
+                <div class="ob-dot" id="dot1"></div>
+                <div class="ob-dot" id="dot2"></div>
+            </div>
+
+            <!-- STEP 0 -->
+            <div class="ob-step active" id="obStep0">
+                <div class="ob-step-label">Passo 1 de 3</div>
+                <div class="ob-title">Qual é o seu maior inimigo?</div>
+                <div class="ob-options">
+                    <button class="ob-opt" data-val="cartao">💳 Cartão de crédito</button>
+                    <button class="ob-opt" data-val="impulso">🛍️ Compras por impulso</button>
+                    <button class="ob-opt" data-val="delivery">🍔 Delivery e rolê</button>
+                    <button class="ob-opt" data-val="parcelamento">📦 Parcelamento infinito</button>
+                    <button class="ob-opt" data-val="cheque">🏦 Cheque especial</button>
+                </div>
+                <button class="btn-ob-next" id="obNext0">CONTINUAR →</button>
+            </div>
+
+            <!-- STEP 1 -->
+            <div class="ob-step" id="obStep1">
+                <div class="ob-step-label">Passo 2 de 3</div>
+                <div class="ob-title">Quanto esse leão já te roubou?</div>
+                <input class="ob-input" type="number" id="obDivida" placeholder="Valor aproximado da dívida (R$)"
+                    min="0">
+                <button class="btn-ob-next" id="obNext1">CONTINUAR →</button>
+                <button class="btn-ob-back" onclick="goObStep(0)">← voltar</button>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="ob-step" id="obStep2">
+                <div class="ob-step-label">Passo 3 de 3</div>
+                <div class="ob-title">Em quanto tempo quer ser livre?</div>
+                <div class="ob-options">
+                    <button class="ob-opt" data-val="3">⚡ 3 meses — missão urgente</button>
+                    <button class="ob-opt" data-val="6">🔥 6 meses — ritmo forte</button>
+                    <button class="ob-opt" data-val="12">🛡️ 1 ano — passo a passo</button>
+                </div>
+                <button class="btn-ob-next" id="obNext2">COMEÇAR A BATALHA 🦁</button>
+                <button class="btn-ob-back" onclick="goObStep(1)">← voltar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ LOGIN ══ -->
+    <div id="loginScreen" class="screen">
+        <div class="login-card">
+            <span class="login-lion">🦁</span>
+            <div class="login-title">MATA O LEÃO</div>
+            <p class="login-sub">Salve seu progresso e entre na batalha</p>
+            <button class="google-btn" id="loginGoogleBtn">🅶 Entrar com Google</button>
+            <div class="login-fine">Seus dados ficam protegidos pelo Google<br>100% gratuito para começar</div>
+        </div>
+    </div>
+
+    <!-- ══ APP ══ -->
+    <div id="appScreen" class="screen">
+        <div class="app-wrap">
+
+            <div class="top-bar">
+                <div class="app-logo">🦁 MATA O LEÃO</div>
+                <button class="btn-logout" id="logoutBtn">Sair</button>
+            </div>
+
+            <!-- user -->
+            <div class="user-bar">
+                <div class="user-avatar" id="userAvatar">🐣</div>
+                <div class="user-info">
+                    <div class="user-name" id="userName">Guerreiro</div>
+                    <div class="user-class" id="userClass">Recruta</div>
+                    <div class="xp-bar">
+                        <div class="xp-fill" id="xpFill" style="width:0%"></div>
+                    </div>
+                    <div class="xp-label" id="xpLabel">0 / 200 XP</div>
+                </div>
+            </div>
+
+            <!-- stats -->
+            <div class="stats-row">
+                <div class="stat-box">
+                    <div class="stat-val" id="statVault">R$0</div>
+                    <div class="stat-lbl">💰 Guardado</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="statStreak">0</div>
+                    <div class="stat-lbl">🔥 Dias seguidos</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="statDesafios">0</div>
+                    <div class="stat-lbl">⚔️ Desafios</div>
+                </div>
+            </div>
+
+            <!-- IA motivacional -->
+            <div class="card">
+                <div class="card-title">🤖 SEU COACH DE BATALHA</div>
+                <div class="ia-box" id="iaBox"><span class="ia-loading">Carregando mensagem do seu coach...</span></div>
+                <button class="btn-nova-ia" id="btnNovaIa">🔄 Nova mensagem</button>
+            </div>
+
+            <!-- DESAFIOS ATIVOS -->
+            <div class="card">
+                <div class="card-title">⚔️ DESAFIOS ATIVOS</div>
+                <div id="desafiosAtivos">
+                    <p style="color:var(--muted);font-size:.85rem">Aceite um desafio abaixo para começar!</p>
+                </div>
+            </div>
+
+            <!-- DESAFIOS DISPONÍVEIS -->
+            <div class="card">
+                <div class="card-title">🗡️ ESCOLHA SEU DESAFIO</div>
+                <div id="desafiosLista"></div>
+            </div>
+
+            <!-- GUARDAR DINHEIRO -->
+            <div class="card">
+                <div class="card-title">💰 GUARDAR DINHEIRO</div>
+                <div class="money-input-row">
+                    <input class="app-input" type="number" id="saveAmount" placeholder="Quanto guardou? (R$)" min="0.01"
+                        step="0.01">
+                    <button class="btn-guardar" id="saveBtn">GUARDAR</button>
+                </div>
+                <input class="app-input" type="text" id="saveNote" placeholder="Nota (ex: freela, sobrou do mercado)"
+                    style="margin-top:.3rem">
+                <ul class="hist-list" id="histList" style="margin-top:.7rem">
+                    <li style="color:var(--muted)">Nenhum depósito ainda.</li>
+                </ul>
+            </div>
+
+            <!-- CHEFES -->
+            <div class="card">
+                <div class="card-title">👹 CHEFES PARA DERROTAR</div>
+                <div id="bossesContainer"></div>
+            </div>
+
+            <!-- CONQUISTAS -->
+            <div class="card">
+                <div class="card-title">🏅 CONQUISTAS</div>
+                <div class="badges-wrap" id="badgesWrap"></div>
+            </div>
+
+            <!-- RANKING -->
+            <div class="card">
+                <div class="card-title">🏆 RANKING</div>
+                <ul class="rank-list" id="rankList">
+                    <li>Carregando...</li>
+                </ul>
+            </div>
+
+            <footer>
+                © 2025 MATA O LEÃO — O inverso do Tigrinho<br>
+                🔒 Dados protegidos · PIX: suportemateoleao@gmail.com
+            </footer>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
+            from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, query, orderBy, limit, getDocs }
+            from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const FB = {
+            apiKey: "AIzaSyDSdaTJO6rFWUF-W09r7cknhNnadkl-57A",
+            authDomain: "mateoleao-7f096.firebaseapp.com",
+            projectId: "mateoleao-7f096",
+            storageBucket: "mateoleao-7f096.firebasestorage.app",
+            messagingSenderId: "34013799126",
+            appId: "1:34013799126:web:73cd4b3977ec091b4a5f77"
+        };
+        const app = initializeApp(FB);
+        const auth = getAuth(app);
+        const prov = new GoogleAuthProvider();
+        const db = getFirestore(app);
+
+        let CU = null, UD = null;
+        const OB = { inimigo: '', divida: 0, tempo: 6 };
+
+        // ─── utils ───────────────────────────────────────
+        const $ = id => document.getElementById(id);
+        const san = s => String(s).replace(/[<>&"']/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;' }[c]));
+        const today = () => new Date().toISOString().slice(0, 10);
+
+        const _cd = {};
+        function canAct(k, ms = 1200) {
+            const n = Date.now();
+            if (_cd[k] && n - _cd[k] < ms) return false;
+            _cd[k] = n; return true;
+        }
+
+        function flash(msg, color = '#22c55e') {
+            const el = $('flash');
+            el.textContent = msg;
+            el.style.display = 'block';
+            el.style.borderColor = color;
+            el.style.color = color;
+            clearTimeout(el._t);
+            el._t = setTimeout(() => { el.style.display = 'none'; }, 2800);
+        }
+
+        function show(id) {
+            ['entradaScreen', 'onboardingScreen', 'loginScreen', 'appScreen']
+                .forEach(s => { const el = $(s); if (el) el.classList.remove('active'); });
+            $(id).classList.add('active');
+        }
+
+        // ─── ONBOARDING ──────────────────────────────────
+        let obStep = 0;
+        window.goObStep = function (n) {
+            $(`obStep${obStep}`).classList.remove('active');
+            obStep = n;
+            $(`obStep${n}`).classList.add('active');
+            [0, 1, 2].forEach(i => { $(`dot${i}`).classList.toggle('done', i < n); });
+        };
+
+        // selecionar opção
+        document.querySelectorAll('.ob-opt').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.closest('.ob-options').querySelectorAll('.ob-opt').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+            });
+        });
+
+        $('obNext0').onclick = () => {
+            const sel = $('obStep0').querySelector('.ob-opt.selected');
+            if (!sel) { flash('Escolha seu inimigo!', '#F5A623'); return; }
+            OB.inimigo = sel.dataset.val;
+            goObStep(1);
+        };
+        $('obNext1').onclick = () => {
+            OB.divida = parseFloat($('obDivida').value) || 0;
+            goObStep(2);
+        };
+        $('obNext2').onclick = () => {
+            const sel = $('obStep2').querySelector('.ob-opt.selected');
+            if (!sel) { flash('Escolha seu prazo!', '#F5A623'); return; }
+            OB.tempo = parseInt(sel.dataset.val);
+            show('loginScreen');
+        };
+
+        // ─── DESAFIOS ─────────────────────────────────────
+        const DESAFIOS_BASE = [
+            { id: 'd_delivery_1', nome: '🍔 Dia sem delivery', desc: 'Fique hoje sem pedir comida.', dif: 1, xp: 80, prazo: 1 },
+            { id: 'd_delivery_7', nome: '🍔 Semana sem delivery', desc: '7 dias sem delivery. Cozinhe em casa.', dif: 3, xp: 300, prazo: 7 },
+            { id: 'd_impulso_24', nome: '🛍️ Regra das 24h', desc: 'Espere 24h antes de qualquer compra.', dif: 1, xp: 60, prazo: 1 },
+            { id: 'd_cartao_min', nome: '💳 Sem mínimo do cartão', desc: 'Pague o valor total da fatura.', dif: 2, xp: 200, prazo: 3 },
+            { id: 'd_bar', nome: '🍺 Semana seca', desc: '7 dias sem bar, boteco ou balada.', dif: 2, xp: 180, prazo: 7 },
+            { id: 'd_parcela', nome: '📦 Zero parcelas', desc: 'Não parcele NADA essa semana.', dif: 2, xp: 150, prazo: 7 },
+            { id: 'd_lista', nome: '🛒 Só o que está na lista', desc: 'No mercado: zero extras.', dif: 1, xp: 70, prazo: 1 },
+            { id: 'd_marmita', nome: '🥡 Marmita 5 dias', desc: 'Leve marmita todos os dias da semana.', dif: 2, xp: 160, prazo: 5 },
+            { id: 'd_subscricao', nome: '📱 Corte uma assinatura', desc: 'Cancele algo que você não usa.', dif: 1, xp: 100, prazo: 1 },
+            { id: 'd_guardar10', nome: '💰 Guarde 10% hoje', desc: 'Guarde 10% de qualquer dinheiro que entrar.', dif: 1, xp: 90, prazo: 1 },
+            { id: 'd_cheque', nome: '🏦 Fuja do cheque especial', desc: 'Não use o cheque especial por 7 dias.', dif: 3, xp: 250, prazo: 7 },
+            { id: 'd_ifood', nome: '🚗 Sem app de corrida', desc: '3 dias sem Uber ou 99.', dif: 2, xp: 120, prazo: 3 },
+        ];
+
+        function difLabel(d) {
+            return d === 1 ? 'FÁCIL' : d === 2 ? 'MÉDIO' : 'DIFÍCIL';
+        }
+        function difClass(d) {
+            return d === 1 ? 'pill-dif-1' : d === 2 ? 'pill-dif-2' : 'pill-dif-3';
+        }
+
+        function renderDesafios() {
+            const ativos = UD.desafiosAtivos || {};
+            const concluidos = new Set(UD.desafiosConcluidos || []);
+
+            // ATIVOS
+            const ativoEl = $('desafiosAtivos');
+            const ativosArr = Object.values(ativos);
+            if (!ativosArr.length) {
+                ativoEl.innerHTML = '<p style="color:var(--muted);font-size:.85rem">Aceite um desafio abaixo para começar!</p>';
+            } else {
+                ativoEl.innerHTML = '';
+                ativosArr.forEach(a => {
+                    const def = DESAFIOS_BASE.find(d => d.id === a.id);
+                    if (!def) return;
+                    const deadline = new Date(a.iniciou);
+                    deadline.setDate(deadline.getDate() + def.prazo);
+                    const diffH = Math.max(0, Math.round((deadline - Date.now()) / 3600000));
+                    const div = document.createElement('div');
+                    div.className = 'desafio-card active-d';
+                    div.innerHTML = `
+        <div class="desafio-top">
+          <div>
+            <div class="desafio-nome">${def.nome}</div>
+            <div class="desafio-desc">${def.desc}</div>
+            <div class="desafio-timer">⏰ ${diffH}h restantes</div>
+          </div>
+        </div>
+        <div class="desafio-badges" style="margin-top:.6rem">
+          <button class="btn-concluir" data-id="${a.id}">✅ Concluí!</button>
+          <button class="btn-desistir" data-id="${a.id}">Desistir</button>
+        </div>
+      `;
+                    ativoEl.appendChild(div);
+                });
+                ativoEl.querySelectorAll('.btn-concluir').forEach(b => b.onclick = () => concluirDesafio(b.dataset.id));
+                ativoEl.querySelectorAll('.btn-desistir').forEach(b => b.onclick = () => desistirDesafio(b.dataset.id));
+            }
+
+            // DISPONÍVEIS (filtrar ativos e concluídos)
+            const lista = $('desafiosLista');
+            lista.innerHTML = '';
+            const disponiveis = DESAFIOS_BASE.filter(d => !ativos[d.id] && !concluidos.has(d.id));
+            if (!disponiveis.length) {
+                lista.innerHTML = '<p style="color:var(--muted);font-size:.85rem">🎉 Você completou todos os desafios! Em breve, novos chegam.</p>';
+                return;
+            }
+            disponiveis.forEach(d => {
+                const div = document.createElement('div');
+                div.className = 'desafio-card';
+                div.innerHTML = `
+      <div class="desafio-top">
+        <div>
+          <div class="desafio-nome">${d.nome}</div>
+          <div class="desafio-desc">${d.desc}</div>
+        </div>
+        <button class="btn-aceitar" data-id="${d.id}">ACEITAR</button>
+      </div>
+      <div class="desafio-badges">
+        <span class="badge-pill ${difClass(d.dif)}">${difLabel(d.dif)}</span>
+        <span class="badge-pill pill-xp">+${d.xp} XP</span>
+        <span class="badge-pill pill-prazo">${d.prazo === 1 ? 'Hoje' : d.prazo + ' dias'}</span>
+      </div>
+    `;
+                lista.appendChild(div);
+            });
+            lista.querySelectorAll('.btn-aceitar').forEach(b => b.onclick = () => aceitarDesafio(b.dataset.id));
+        }
+
+        async function aceitarDesafio(id) {
+            if (!canAct('aceitar_' + id)) return;
+            const def = DESAFIOS_BASE.find(d => d.id === id);
+            if (!def) return;
+            const ativos = UD.desafiosAtivos || {};
+            if (Object.keys(ativos).length >= 3) { flash('Máximo 3 desafios simultâneos!', '#F5A623'); return; }
+            ativos[id] = { id, iniciou: new Date().toISOString() };
+            UD.desafiosAtivos = ativos;
+            await updateDoc(doc(db, 'usuarios', CU.uid), { desafiosAtivos: ativos });
+            flash(`Desafio aceito: ${def.nome} ⚔️`);
+            await gerarMensagemIA();
+            renderDesafios();
+        }
+
+        async function concluirDesafio(id) {
+            if (!canAct('concluir_' + id)) return;
+            const def = DESAFIOS_BASE.find(d => d.id === id);
+            if (!def) return;
+            const ativos = { ...UD.desafiosAtivos };
+            delete ativos[id];
+            const concluidos = [...(UD.desafiosConcluidos || []), id];
+            const totalDesafios = (UD.totalDesafios || 0) + 1;
+            UD.desafiosAtivos = ativos;
+            UD.desafiosConcluidos = concluidos;
+            UD.totalDesafios = totalDesafios;
+            await updateDoc(doc(db, 'usuarios', CU.uid), { desafiosAtivos: ativos, desafiosConcluidos: concluidos, totalDesafios });
+            await updateProgress(def.xp, 0, `Desafio: ${def.nome}`);
+            flash(`🏆 DESAFIO VENCIDO! +${def.xp} XP!`);
+            await gerarMensagemIA('vitoria');
+            renderDesafios();
+            checkConquistas();
+        }
+
+        async function desistirDesafio(id) {
+            const ativos = { ...UD.desafiosAtivos };
+            delete ativos[id];
+            UD.desafiosAtivos = ativos;
+            await updateDoc(doc(db, 'usuarios', CU.uid), { desafiosAtivos: ativos });
+            flash('Desafio abandonado. Você pode tentar novamente!', '#F5A623');
+            renderDesafios();
+        }
+
+        // ─── IA MENSAGEM ──────────────────────────────────
+        async function gerarMensagemIA(contexto = 'geral') {
+            const box = $('iaBox');
+            if (!box) return;
+            box.innerHTML = '<span class="ia-loading">Seu coach está pensando...</span>';
+            const btn = $('btnNovaIa');
+            if (btn) btn.disabled = true;
+
+            const inimigoLabel = {
+                cartao: 'cartão de crédito', impulso: 'compras por impulso',
+                delivery: 'delivery e saídas', parcelamento: 'parcelamentos', cheque: 'cheque especial'
+            }[UD.inimigo || 'impulso'] || 'dívidas';
+
+            const desafiosAtivos = Object.keys(UD.desafiosAtivos || {}).map(id => DESAFIOS_BASE.find(d => d.id === id)?.nome).filter(Boolean).join(', ') || 'nenhum ainda';
+
+            const prompts = {
+                geral: `Você é um coach financeiro brasileiro, animado, direto e sem enrolação. 
+Fale com ${san(UD.nome || 'guerreiro')}, nível ${UD.nivel}, que luta contra ${inimigoLabel}, 
+tem ${UD.streak || 0} dias de sequência, guardou R$${(UD.dinheiroGuardado || 0).toFixed(0)} e está nos desafios: ${desafiosAtivos}.
+Crie UMA mensagem curta (2-3 frases), motivadora e divertida. Use gíria brasileira moderada. 
+Fale sobre o desafio específico que ele está enfrentando. Seja engraçado mas honesto.`,
+                vitoria: `Você é um coach financeiro brasileiro celebrando com ${san(UD.nome || 'guerreiro')} que acabou de vencer um desafio financeiro!
+Crie UMA mensagem de celebração curta (2-3 frases), empolgada, com energia de vitória. Use gíria brasileira. 
+Mencione que ele está ficando mais forte contra o ${inimigoLabel}.`
+            };
+
+            try {
+                const resp = await fetch('https://api.anthropic.com/v1/messages', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        model: 'claude-sonnet-4-20250514',
+                        max_tokens: 150,
+                        messages: [{ role: 'user', content: prompts[contexto] || prompts.geral }]
+                    })
+                });
+                const data = await resp.json();
+                const msg = data.content?.map(b => b.text || '').join('') || 'Bora continuar guerreiro! 💪';
+                box.textContent = msg;
+            } catch (e) {
+                box.textContent = 'Seu coach está offline, mas você não precisa dele pra continuar! 💪';
+            }
+            if (btn) btn.disabled = false;
+        }
+
+        $('btnNovaIa').onclick = () => { if (canAct('ia', 4000)) gerarMensagemIA(); else flash('Aguarde um momento...', '#F5A623'); };
+
+        // ─── PROGRESSO ────────────────────────────────────
+        async function updateProgress(xpGain, moneyGain, nota = '') {
+            if (!CU || !UD) return;
+            let xp = UD.xpAtual + xpGain;
+            let lvl = UD.nivel;
+            let xpN = UD.xpProximoNivel;
+            while (xp >= xpN) { lvl++; xp -= xpN; xpN = Math.max(200, Math.floor(xpN * 1.3)); }
+            const money = Math.max(0, UD.dinheiroGuardado + moneyGain);
+            const xpT = (UD.xpTotal || 0) + xpGain;
+            let hist = UD.historico || [];
+            if (moneyGain > 0) hist = [...hist, { val: moneyGain, nota, date: new Date().toISOString() }].slice(-100);
+            const patch = { xpAtual: xp, nivel: lvl, xpProximoNivel: xpN, dinheiroGuardado: money, xpTotal: xpT, historico: hist, ultimoAcesso: new Date().toISOString() };
+            await updateDoc(doc(db, 'usuarios', CU.uid), patch);
+            UD = { ...UD, ...patch };
+            updateUI();
+            loadRanking();
+        }
+
+        // ─── GUARDAR ──────────────────────────────────────
+        $('saveBtn').onclick = async () => {
+            if (!canAct('save', 1000)) return;
+            const val = parseFloat($('saveAmount').value);
+            const nota = $('saveNote').value.trim().slice(0, 40);
+            if (isNaN(val) || val <= 0 || val > 100000) { flash('Valor inválido!', '#F5A623'); return; }
+            const xp = Math.max(1, Math.floor(val / 10));
+            await updateProgress(xp, val, nota || 'Depósito');
+            $('saveAmount').value = ''; $('saveNote').value = '';
+            flash(`💰 R$${val.toFixed(2)} guardado! +${xp} XP`);
+            if (UD.dinheiroGuardado >= 100) await gerarMensagemIA();
+        };
+
+        // ─── CHEFES ───────────────────────────────────────
+        const BOSSES = [
+            { name: '💳 CARTÃO SANGRADOR', maxHp: 300, desc: 'Pague a fatura inteira' },
+            { name: '🛍️ COMPRA POR IMPULSO', maxHp: 200, desc: 'Espere 24h' },
+            { name: '⏰ AMANHÃ ETERNO', maxHp: 150, desc: 'Aja hoje' },
+        ];
+        async function attackBoss(idx) {
+            if (!canAct('boss' + idx, 1000)) return;
+            if (!UD.bossesHealth) UD.bossesHealth = [300, 200, 150];
+            if (UD.bossesHealth[idx] <= 0) return;
+            const dmg = Math.floor(Math.random() * 16) + 10;
+            UD.bossesHealth[idx] = Math.max(0, UD.bossesHealth[idx] - dmg);
+            const died = UD.bossesHealth[idx] === 0;
+            await updateDoc(doc(db, 'usuarios', CU.uid), { bossesHealth: UD.bossesHealth });
+            await updateProgress(died ? 80 : 3, 0);
+            if (died) { flash('💀 CHEFE DERROTADO! +80 XP!'); await gerarMensagemIA('vitoria'); }
+            else flash(`🗡️ -${dmg} HP!`);
+            renderBosses();
+        }
+        function renderBosses() {
+            if (!UD.bossesHealth) UD.bossesHealth = [300, 200, 150];
+            const c = $('bossesContainer'); c.innerHTML = '';
+            BOSSES.forEach((b, i) => {
+                const hp = UD.bossesHealth[i], pct = Math.max(0, (hp / b.maxHp) * 100), dead = hp <= 0;
+                const div = document.createElement('div'); div.className = 'boss-item';
+                div.innerHTML = `
+      <div class="boss-row">
+        <strong style="font-size:.9rem">${b.name}</strong>
+        <span style="font-size:.78rem;color:${dead ? '#4ade80' : '#f87171'}">❤️ ${Math.max(0, hp)}/${b.maxHp}</span>
+      </div>
+      <div class="boss-hp-bar"><div class="boss-hp-fill" style="width:${pct}%"></div></div>
+      <div class="boss-row">
+        <span style="font-size:.72rem;color:var(--muted)">🎯 ${b.desc}</span>
+        <button class="btn-attack" data-i="${i}" ${dead ? 'disabled' : ''}>🗡️ ATACAR</button>
+      </div>`;
+                c.appendChild(div);
+            });
+            c.querySelectorAll('.btn-attack').forEach(b => b.onclick = () => attackBoss(parseInt(b.dataset.i)));
+        }
+
+        // ─── CONQUISTAS ───────────────────────────────────
+        const CONQUISTAS = [
+            { id: 'first_save', icon: '💰', name: 'Primeiro Depósito' },
+            { id: 'save_500', icon: '💸', name: 'R$500 Guardados' },
+            { id: 'streak_7', icon: '🔥', name: '7 Dias Seguidos' },
+            { id: 'desafio_1', icon: '⚔️', name: '1° Desafio Vencido' },
+            { id: 'desafio_5', icon: '🏆', name: '5 Desafios Vencidos' },
+            { id: 'boss_kill', icon: '💀', name: 'Chefe Derrotado' },
+            { id: 'level_5', icon: '🐉', name: 'Nível 5' },
+        ];
+        async function checkConquistas() {
+            const earned = new Set(UD.conquistas || []);
+            const prev = earned.size;
+            if (UD.dinheiroGuardado >= 0.01) earned.add('first_save');
+            if (UD.dinheiroGuardado >= 500) earned.add('save_500');
+            if ((UD.streak || 0) >= 7) earned.add('streak_7');
+            if ((UD.totalDesafios || 0) >= 1) earned.add('desafio_1');
+            if ((UD.totalDesafios || 0) >= 5) earned.add('desafio_5');
+            if ((UD.bossesHealth || [300, 200, 150]).some(h => h <= 0)) earned.add('boss_kill');
+            if (UD.nivel >= 5) earned.add('level_5');
+            if (earned.size > prev) {
+                const novo = [...earned].find(e => !(UD.conquistas || []).includes(e));
+                if (novo) { const c = CONQUISTAS.find(x => x.id === novo); flash(`🏅 Conquista: ${c?.name}!`); }
+                UD.conquistas = [...earned];
+                await updateDoc(doc(db, 'usuarios', CU.uid), { conquistas: UD.conquistas });
+            }
+            const w = $('badgesWrap'); w.innerHTML = '';
+            CONQUISTAS.forEach(c => {
+                const on = earned.has(c.id);
+                const d = document.createElement('div');
+                d.className = `badge-item ${on ? 'earned' : ''}`;
+                d.innerHTML = `<span class="badge-icon">${c.icon}</span><div class="badge-name">${san(c.name)}</div>`;
+                w.appendChild(d);
+            });
+        }
+
+        // ─── RANKING ──────────────────────────────────────
+        async function loadRanking() {
+            try {
+                const q = query(collection(db, 'usuarios'), orderBy('xpTotal', 'desc'), limit(10));
+                const ss = await getDocs(q);
+                const list = $('rankList'); list.innerHTML = '';
+                let pos = 1;
+                ss.forEach(d => {
+                    const u = d.data();
+                    const m = pos === 1 ? '🥇' : pos === 2 ? '🥈' : pos === 3 ? '🥉' : `${pos}º`;
+                    const li = document.createElement('li');
+                    li.innerHTML = `${m} Guerreiro #${pos}<span class="rank-xp">Nv.${u.nivel} · ${u.xpTotal || 0} XP</span>`;
+                    list.appendChild(li);
+                    pos++;
+                });
+            } catch (e) { }
+        }
+
+        // ─── STREAK ───────────────────────────────────────
+        async function updateStreak() {
+            const now = today();
+            const last = (UD.ultimoAcesso || '').slice(0, 10);
+            const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+            let s = UD.streak || 0;
+            if (last === now) { }
+            else if (last === yesterday) { s++; }
+            else { s = 1; }
+            UD.streak = s;
+            await updateDoc(doc(db, 'usuarios', CU.uid), { streak: s, ultimoAcesso: new Date().toISOString() });
+        }
+
+        // ─── UPDATE UI ────────────────────────────────────
+        const CLASSES = ['Recruta', 'Soldado', 'Guerreiro', 'Caçador', 'Dragão', 'Lenda'];
+        const AVATARS = ['🐣', '🐥', '🐺', '🦁', '🐉', '👑'];
+        function updateUI() {
+            if (!UD) return;
+            const ai = Math.min(UD.nivel - 1, AVATARS.length - 1);
+            $('userAvatar').textContent = AVATARS[ai];
+            $('userName').textContent = san((UD.nome || '').slice(0, 25));
+            $('userClass').textContent = CLASSES[ai] || 'Lenda';
+            $('xpLabel').textContent = `${UD.xpAtual} / ${UD.xpProximoNivel} XP`;
+            $('xpFill').style.width = `${Math.min(100, (UD.xpAtual / UD.xpProximoNivel) * 100)}%`;
+            $('statVault').textContent = `R$${(UD.dinheiroGuardado || 0).toFixed(0)}`;
+            $('statStreak').textContent = UD.streak || 0;
+            $('statDesafios').textContent = UD.totalDesafios || 0;
+            // histórico
+            const hist = (UD.historico || []).slice().reverse().slice(0, 20);
+            const hl = $('histList');
+            hl.innerHTML = hist.length ? hist.map(h => `<li><span>${san(h.nota || 'Depósito')}</span><span style="color:var(--green)">+R$${(+h.val).toFixed(2)}</span></li>`).join('') : `<li style="color:var(--muted)">Nenhum depósito ainda.</li>`;
+        }
+
+        // ─── LOAD USER ────────────────────────────────────
+        async function loadUser(uid, email, displayName) {
+            const ref = doc(db, 'usuarios', uid);
+            const snap = await getDoc(ref);
+            const nome = (displayName || 'Guerreiro').slice(0, 30).replace(/[<>&"']/g, '');
+            if (snap.exists()) {
+                UD = snap.data();
+                if (!UD.bossesHealth) UD.bossesHealth = [300, 200, 150];
+                if (!UD.conquistas) UD.conquistas = [];
+                if (!UD.historico) UD.historico = [];
+                if (!UD.desafiosAtivos) UD.desafiosAtivos = {};
+                if (!UD.desafiosConcluidos) UD.desafiosConcluidos = [];
+                if (!UD.totalDesafios) UD.totalDesafios = 0;
+                // salvar dados do onboarding se novo
+                if (OB.inimigo && !UD.inimigo) {
+                    UD.inimigo = OB.inimigo; UD.divida = OB.divida; UD.tempo = OB.tempo;
+                    await updateDoc(ref, { inimigo: OB.inimigo, divida: OB.divida, tempo: OB.tempo });
+                }
+            } else {
+                const now = new Date().toISOString();
+                UD = {
+                    uid, email, nome, dataCriacao: now, plano: 'free', nivel: 1, xpTotal: 0, xpAtual: 0, xpProximoNivel: 200,
+                    dinheiroGuardado: 0, conquistas: [], streak: 1, ultimoAcesso: now, bossesHealth: [300, 200, 150],
+                    historico: [], desafiosAtivos: {}, desafiosConcluidos: [], totalDesafios: 0,
+                    inimigo: OB.inimigo, divida: OB.divida, tempo: OB.tempo
+                };
+                await setDoc(ref, UD);
+            }
+            await updateStreak();
+            updateUI();
+            renderBosses();
+            renderDesafios();
+            checkConquistas();
+            loadRanking();
+            gerarMensagemIA();
+        }
+
+        // ─── AUTH ──────────────────────────────────────── 
+        $('btnEntrar').onclick = () => show('onboardingScreen');
+
+        $('loginGoogleBtn').onclick = async () => {
+            try {
+                const r = await signInWithPopup(auth, prov);
+                CU = r.user;
+                await loadUser(CU.uid, CU.email, CU.displayName);
+                show('appScreen');
+            } catch (e) { console.error(e); flash('Erro ao fazer login. Tente novamente.', '#e03a3a'); }
+        };
+
+        $('logoutBtn').onclick = async () => {
+            await signOut(auth);
+            CU = null; UD = null;
+            show('entradaScreen');
+        };
+
+        onAuthStateChanged(auth, async user => {
+            if (user) {
+                CU = user;
+                await loadUser(CU.uid, CU.email, CU.displayName);
+                show('appScreen');
+            } else {
+                show('entradaScreen');
+            }
+        });
+    </script>
+</body>
+
+</html>
