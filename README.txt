@@ -1,90 +1,122 @@
-? MATA O LEÃO
-O inverso do Tigrinho.
-Aqui o usuário aprende a vencer dívidas, controlar impulsos financeiros e evoluir através da gamificação.
-? Sobre o Projeto
-O MATA O LEÃO é uma aplicação web gamificada de educação financeira criada para transformar hábitos financeiros em desafios interativos.
-A proposta do projeto é ajudar usuários a:
-    • ? controlar dívidas
-    • ? evitar compras por impulso
-    • ? reduzir gastos desnecessários
-    • ? criar o hábito de guardar dinheiro
+# ğŸ¦ MATA O LEÃƒO
+
+> O inverso do Tigrinho.
+> Aqui o usuÃ¡rio aprende a vencer dÃ­vidas, controlar impulsos financeiros e evoluir atravÃ©s da gamificaÃ§Ã£o.
+
+---
+
+## ğŸš€ Sobre o Projeto
+
+O **MATA O LEÃƒO** Ã© uma aplicaÃ§Ã£o web gamificada de educaÃ§Ã£o financeira criada para transformar hÃ¡bitos financeiros em desafios interativos.
+
+A proposta do projeto Ã© ajudar usuÃ¡rios a:
+
+* ğŸ’³ controlar dÃ­vidas
+* ğŸ›’ evitar compras por impulso
+* ğŸ” reduzir gastos desnecessÃ¡rios
+* ğŸ’° criar o hÃ¡bito de guardar dinheiro
+
 Tudo isso utilizando:
-    • Sistema de XP
-    • Ranking
-    • Conquistas
-    • Desafios
-    • Streak diário
-    • Chefes financeiros
-    • Progressão de nível
 
-? Funcionalidades
-? Login com Google
-? Dashboard do usuário
-? Sistema de XP e níveis
-? Desafios financeiros
-? Sistema de streak ?
-? Ranking global ?
-? Conquistas e badges ?
-? Sistema de bosses ?
-? Persistência de dados com Firebase
-? Interface responsiva ?
-? Coach motivacional ?
+* sistema de XP
+* ranking
+* conquistas
+* desafios
+* streak diÃ¡rio
+* chefes financeiros
+* progressÃ£o de nÃ­vel
 
-?? Tecnologias Utilizadas
-    • HTML5
-    • CSS3
-    • JavaScript
-    • Firebase Authentication
-    • Firestore Database
+---
 
+## ğŸ® Funcionalidades
 
-? Preview
-? Tela Inicial
-? Dashboard
-? Ranking
+âœ… Login com Google
+âœ… Dashboard do usuÃ¡rio
+âœ… Sistema de XP e nÃ­veis
+âœ… Desafios financeiros
+âœ… Sistema de streak ğŸ”¥
+âœ… Ranking global ğŸ†
+âœ… Conquistas e badges ğŸ…
+âœ… Sistema de bosses ğŸ‘¹
+âœ… PersistÃªncia de dados com Firebase
+âœ… Interface responsiva ğŸ“±
+âœ… Coach motivacional ğŸ¤–
 
+---
 
-? Deploy
-? Projeto online:
+## ğŸ› ï¸ Tecnologias Utilizadas
+
+* HTML5
+* CSS3
+* JavaScript
+* Firebase Authentication
+* Firestore Database
+
+---
+
+## ğŸ“¸ Preview
+
+### ğŸ  Tela Inicial
+
+<img width="100%" src="./assets/home.png">
+
+### ğŸ“Š Dashboard
+
+<img width="100%" src="./assets/dashboard.png">
+
+### ğŸ† Ranking
+
+<img width="100%" src="./assets/ranking.png">
+
+---
+
+## ğŸŒ Deploy
+
+ğŸš€ Projeto online:
 https://mataleao.netlify.app/
 
+---
 
+## ğŸ¯ Objetivo
 
-
-
-? Objetivo
 O projeto foi criado com foco em:
-    • Gamificação
-    • Experiência do usuário
-    • Educação financeira
-    • Motivação comportamental
-Transformando organização financeira em uma experiência interativa e divertida.
 
+* gamificaÃ§Ã£o
+* experiÃªncia do usuÃ¡rio
+* educaÃ§Ã£o financeira
+* motivaÃ§Ã£o comportamental
 
-? Diferenciais
-    • Conceito original inspirado na luta contra dívidas
-    • Gamificação completa
-    • Sistema de progressão
-    • Integração com Firebase
-    • Interface temática e imersiva
+Transformando organizaÃ§Ã£o financeira em uma experiÃªncia interativa e divertida.
 
+---
 
+## ğŸ”¥ Diferenciais
 
+* Conceito original inspirado na luta contra dÃ­vidas
+* GamificaÃ§Ã£o completa
+* Sistema de progressÃ£o
+* IntegraÃ§Ã£o com Firebase
+* Interface temÃ¡tica e imersiva
 
+---
 
-? Aprendizados
+## ğŸ“š Aprendizados
+
 Durante o desenvolvimento deste projeto foram trabalhados conceitos como:
-    • Autenticação de usuários
-    • Banco de dados em tempo real
-    • Manipulação de estado
-    • Renderização dinâmica
-    • Lógica de progressão
-    • UX/UI
-    • Gamificação aplicada
 
+* autenticaÃ§Ã£o de usuÃ¡rios
+* banco de dados em tempo real
+* manipulaÃ§Ã£o de estado
+* renderizaÃ§Ã£o dinÃ¢mica
+* lÃ³gica de progressÃ£o
+* UX/UI
+* gamificaÃ§Ã£o aplicada
 
-??? Autor
-Desenvolvido por Lucas Correa ?
+---
+
+## ğŸ‘¨â€ğŸ’» Autor
+
+Desenvolvido por Lucas Correa ğŸš€
+
 GitHub:
 https://github.com/hdjlucas-maker
-
